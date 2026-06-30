@@ -147,6 +147,14 @@ export default function Certificates() {
                     <span className={styles.metaLabel}>Credential ID</span>
                     <span className={styles.metaVal}>{certificates[active].credentialId}</span>
                   </div>
+                    <a
+      href={certificates[active].link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.certLink}
+    >
+      View ↗
+    </a>
                 </div>
                 
                 <div className={styles.certBar} />

@@ -82,3 +82,38 @@
   .sidebarWrap { max-height: calc(3 * 5.4rem + 2 * 0.6rem); position: static; }
   .sidebar { max-height: calc(3 * 5.4rem + 2 * 0.6rem); }
 }
+.certLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 84px;
+  height: 36px;
+  padding: 0 1rem;
+
+  border: 1.5px solid var(--cert-color);
+  border-radius: 999px;
+
+  color: var(--cert-color);
+  background: transparent;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: all 0.25s ease;
+}
+
+.certLink:hover {
+  background: var(--cert-color);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.certLink:active {
+  transform: translateY(0);
+}
