@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import styles from './Hero.module.css';
 
 const roles = ['Full-Stack Dev', 'ML Engineer', 'Problem Solver', 'CS Student'];
+const longestRole = roles.reduce((a, b) => (a.length > b.length ? a : b));
 
 export default function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
@@ -67,7 +68,10 @@ export default function Hero() {
           transition={{ delay: 0.7 }}
         >
           <span className={styles.typeLabel}>→</span>
-          <span className={styles.typed}>{displayed}</span>
+          <span className={styles.typed}>
+            {displayed}
+            <span className={styles.measure} aria-hidden="true">{longestRole}</span>
+          </span>
           <span className={styles.cursor} />
         </motion.div>
 
@@ -97,8 +101,8 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
       >
-        <span className={styles.scrollLine} />
-        <span className={styles.scrollText}>Scroll</span>
+        {/* <span className={styles.scrollLine} /> */}
+        {/* <span className={styles.scrollText}>Scroll</span> */}
       </motion.div>
     </section>
   );
