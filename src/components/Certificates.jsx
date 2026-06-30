@@ -31,6 +31,42 @@ const certificates = [
     description: 'Replace this with a description of what you learned or achieved in this certification.',
     color: '#f59e0b',
   },
+  {
+    title: 'Add Your Certificate',
+    issuer: 'Issuing Organization',
+    date: 'Month Year',
+    credentialId: 'XXXX-XXXX',
+    category: 'Category',
+    description: 'Replace this with a description of what you learned or achieved in this certification.',
+    color: '#ec4899',
+  },
+  {
+    title: 'Add Your Certificate',
+    issuer: 'Issuing Organization',
+    date: 'Month Year',
+    credentialId: 'XXXX-XXXX',
+    category: 'Category',
+    description: 'Replace this with a description of what you learned or achieved in this certification.',
+    color: '#06b6d4',
+  },
+  {
+    title: 'Add Your Certificate',
+    issuer: 'Issuing Organization',
+    date: 'Month Year',
+    credentialId: 'XXXX-XXXX',
+    category: 'Category',
+    description: 'Replace this with a description of what you learned or achieved in this certification.',
+    color: '#a855f7',
+  },
+  {
+    title: 'Add Your Certificate',
+    issuer: 'Issuing Organization',
+    date: 'Month Year',
+    credentialId: 'XXXX-XXXX',
+    category: 'Category',
+    description: 'Replace this with a description of what you learned or achieved in this certification.',
+    color: '#ef4444',
+  },
 ];
 
 export default function Certificates() {
@@ -53,22 +89,24 @@ export default function Certificates() {
         </motion.h2>
 
         <div className={styles.layout}>
-          <motion.div className={styles.sidebar}
+          <motion.div className={styles.sidebarWrap}
             initial={{ opacity: 0, x: -30 }} animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}>
-            {certificates.map((c, i) => (
-              <button key={i}
-                className={`${styles.sideItem} ${active === i ? styles.sideItemActive : ''}`}
-                onClick={() => setActive(i)}
-                style={{ '--cert-color': c.color }}>
-                <span className={styles.sideNum}>0{i + 1}</span>
-                <div className={styles.sideText}>
-                  <span className={styles.sideTitle}>{c.title}</span>
-                  <span className={styles.sideIssuer}>{c.issuer}</span>
-                </div>
-                {active === i && <span className={styles.sideArrow}>→</span>}
-              </button>
-            ))}
+            <div className={styles.sidebar}>
+              {certificates.map((c, i) => (
+                <button key={i}
+                  className={`${styles.sideItem} ${active === i ? styles.sideItemActive : ''}`}
+                  onClick={() => setActive(i)}
+                  style={{ '--cert-color': c.color }}>
+                  <span className={styles.sideNum}>0{i + 1}</span>
+                  <div className={styles.sideText}>
+                    <span className={styles.sideTitle}>{c.title}</span>
+                    <span className={styles.sideIssuer}>{c.issuer}</span>
+                  </div>
+                  {active === i && <span className={styles.sideArrow}>→</span>}
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           <div className={styles.detail}>

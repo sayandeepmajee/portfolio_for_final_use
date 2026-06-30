@@ -11,14 +11,30 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700; letter-spacing: -0.03em; margin-bottom: 3rem;
 }
-.layout { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start; }
-.sidebar { display: flex; flex-direction: column; gap: 0.6rem; }
+.layout {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;
+  align-items: start;
+}
+
+/* Sidebar: scrollable list of certificates, capped to show exactly 3 items */
+.sidebarWrap { max-height: calc(3 * 5.4rem + 2 * 0.6rem); overflow: hidden; position: sticky; top: 6rem; }
+.sidebar {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  max-height: calc(3 * 5.4rem + 2 * 0.6rem); overflow-y: auto; padding-right: 0.5rem;
+  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+}
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.sidebar::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
 .sideItem {
   display: flex; align-items: center; gap: 1rem;
   padding: 1rem 1.2rem; border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--surface);
   text-align: left; width: 100%;
+  height: 5.4rem; flex-shrink: 0; box-sizing: border-box;
   transition: border-color 0.2s, background 0.2s;
   cursor: pointer;
 }
@@ -29,10 +45,12 @@
 .sideTitle { font-size: 0.85rem; font-weight: 600; color: var(--text); line-height: 1.3; }
 .sideIssuer { font-size: 0.72rem; color: var(--text3); }
 .sideArrow { color: var(--cert-color, var(--accent)); font-size: 0.9rem; }
+
+/* Detail card: auto height, not fixed to sidebar, never scrolls internally */
 .detail { position: relative; }
 .card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 16px; padding: 2rem; position: relative; overflow: hidden;
+  border-radius: 16px; padding: 2rem; position: relative; overflow: visible;
 }
 .cardTop { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.4rem; }
 .certBadge {
@@ -61,4 +79,6 @@
 @media (max-width: 768px) {
   .section { padding: 5rem 1.5rem; }
   .layout { grid-template-columns: 1fr; }
+  .sidebarWrap { max-height: calc(3 * 5.4rem + 2 * 0.6rem); position: static; }
+  .sidebar { max-height: calc(3 * 5.4rem + 2 * 0.6rem); }
 }
